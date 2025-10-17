@@ -69,8 +69,15 @@ export default function NewsCard({ news, initialClamp = 200, onReadMore }) {
 
       {/* Details + Read More */}
       <div className="px-4 pb-3 text-gray-700 text-sm">
-        <p>{displayText}</p>
-        {details.length > initialClamp && !onReadMore && (
+        <p>
+          {expanded
+            ? details
+            : details.length > 200
+            ? `${details.slice(0, 200)}...`
+            : details}
+        </p>
+
+        {details.length > 200 && (
           <button
             type="button"
             onClick={handleReadMore}
@@ -78,15 +85,6 @@ export default function NewsCard({ news, initialClamp = 200, onReadMore }) {
             aria-expanded={expanded}
           >
             {expanded ? "Show Less" : "Read More"}
-          </button>
-        )}
-        {details.length > initialClamp && onReadMore && (
-          <button
-            type="button"
-            onClick={handleReadMore}
-            className="btn btn-link btn-xs p-0 mt-1 text-primary"
-          >
-            Read More
           </button>
         )}
       </div>
