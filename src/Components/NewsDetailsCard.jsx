@@ -4,7 +4,7 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 import { Link } from "react-router";
 
 const NewsDetailsCard = ({ news }) => {
-  console.log(news);
+//   console.log(news);
   return (
     <div>
       <div>

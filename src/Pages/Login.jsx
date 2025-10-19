@@ -9,12 +9,12 @@ const Login = () => {
   const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log("object");
+    // console.log("object");
     const form = e.target;
 
     const email = form.email.value;
     const password = form.password.value;
-    console.log({ email, password });
+    // console.log({ email, password });
 
     signIn(email, password)
       .then((result) => {
