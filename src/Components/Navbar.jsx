@@ -4,11 +4,13 @@ import userImg from "../assets/user.png";
 import { AuthContext } from "../Provider/AuthProvider";
 const Navbar = () => {
   const { user, logout } = use(AuthContext);
+  // console.log(user.photoURL);
+  // const userpic = user.photoURL;
   const handleLogout = () => {
     // console.log("object");
     logout()
       .then(() => {
-        alert("successfully logedOut")
+        alert("successfully logedOut");
       })
       .catch((error) => {
         console.log(error);
@@ -23,10 +25,30 @@ const Navbar = () => {
   );
   return (
     <div className="flex justify-between items-center pt-5 ">
-      <div className="">{user && <p className="bg-secondary p-3 rounded-2xl text-white">{user.email}</p>}</div>
+      <div className="">
+        {user && (
+          <p className="bg-secondary p-3 rounded-2xl text-white">
+            {user.displayName}
+          </p>
+        )}
+      </div>
       <div className="nav flex gap-5 text-accent">{links}</div>
       <div className="login-btn flex items-center gap-5">
-        <img src={userImg} alt="" />
+        {/* {user ? (
+          <img
+            className="w-[40px] bg-blue-300 rounded-full"
+            src={userpic}
+            alt=""
+          />
+        ) : (
+          <img src={userImg} alt="" />
+        )} */}
+
+        <img
+          className="w-[40px] bg-blue-300 rounded-full"
+          src={`${user ? user.photoURL : userImg}`}
+          alt=""
+        />
 
         {user ? (
           <button

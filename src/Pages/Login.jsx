@@ -1,8 +1,9 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Login = () => {
+  const [error, setError] = useState("");
   const { signIn } = use(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
@@ -22,8 +23,12 @@ const Login = () => {
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
-        alert(errorMessage);
+        if (errorCode == "auth/invalid-credential") {
+          const newError = "Invalid User Email or Password";
+          return setError(newError);
+        }
+        // const errorMessage = error.message;
+        // alert(errorMessage);
       });
   };
 
@@ -41,6 +46,7 @@ const Login = () => {
               name="email"
               className="input"
               placeholder="Email"
+              required
             />
             <label className="label">Password</label>
             <input
@@ -48,6 +54,7 @@ const Login = () => {
               name="password"
               className="input"
               placeholder="Password"
+              required
             />
             <div>
               <a className="link link-hover">Forgot password?</a>
@@ -61,6 +68,7 @@ const Login = () => {
               </Link>{" "}
             </p>
           </fieldset>
+          {error && <p className="text-red-500 text-center">{error}</p>}
         </form>
       </div>
     </div>
