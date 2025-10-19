@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { FaEye, FaRegBookmark, FaShareAlt, FaStar } from "react-icons/fa";
 import { format } from "date-fns";
+import { Link } from "react-router";
 
 export default function NewsCard({ news, initialClamp = 200, onReadMore }) {
-  const { title, rating, total_view, author, image_url, details } = news;
+  const {id, title, rating, total_view, author, image_url, details } = news;
 
   const [expanded, setExpanded] = useState(false);
 
@@ -74,18 +75,22 @@ export default function NewsCard({ news, initialClamp = 200, onReadMore }) {
             ? details
             : details.length > 200
             ? `${details.slice(0, 200)}...`
-            : details}
+            : details
+            }
         </p>
 
         {details.length > 200 && (
-          <button
+          <Link
+            to={`/news-details/${id}`}
             type="button"
             onClick={handleReadMore}
             className="btn btn-link btn-xs p-0 mt-1 text-primary"
             aria-expanded={expanded}
           >
-            {expanded ? "Show Less" : "Read More"}
-          </button>
+            Read More
+            {/* {expanded ? "Show Less" : "Read More"}
+             */}
+          </Link>
         )}
       </div>
 

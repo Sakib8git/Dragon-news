@@ -23,7 +23,7 @@ const Navbar = () => {
   );
   return (
     <div className="flex justify-between items-center pt-5 ">
-      <div className="">{user && <p>{user.email}</p>}</div>
+      <div className="">{user && <p className="bg-secondary p-3 rounded-2xl text-white">{user.email}</p>}</div>
       <div className="nav flex gap-5 text-accent">{links}</div>
       <div className="login-btn flex items-center gap-5">
         <img src={userImg} alt="" />
@@ -32,7 +32,7 @@ const Navbar = () => {
           <button
             onClick={handleLogout}
             to="/auth/login"
-            className="btn btn-primary"
+            className="btn btn-secondary"
           >
             LogOut
           </button>
