@@ -11,6 +11,9 @@ import AuthLayout from "../Layouts/AuthLayout";
 import NewsDetails from "../Pages/NewsDetails";
 import PrivateRoute from "../Provider/PrivateRoute";
 import Loading from "../Pages/Loading";
+import About from "../Pages/About";
+import Carrer from "../Pages/Career";
+import Career from "../Pages/Career";
 
 // import Home from "../Components/Home";
 
@@ -23,6 +26,12 @@ export const router = createBrowserRouter([
         index: true,
         Component: Home,
       },
+      {
+        path: "/about",
+        Component: About,
+      },
+
+      { path: "/career", Component: Career },
       {
         path: "/category/:id",
         Component: CategoryNews,
