@@ -1,6 +1,7 @@
 import React from "react";
 
 import { IoIosArrowRoundBack } from "react-icons/io";
+import { Link } from "react-router";
 
 const NewsDetailsCard = ({ news }) => {
   console.log(news);
@@ -31,11 +32,11 @@ const NewsDetailsCard = ({ news }) => {
               </div>
 
               {/* Back Button */}
-              <button className="btn btn-secondary text-white px-6 py-3 rounded hover:bg-red-700 transition-colors flex items-center gap-2">
+              <Link to={`/category/${news.category_id}`} className="btn btn-secondary w-[350px] text-white px-6 py-3 rounded hover:bg-red-700 transition-colors flex items-center gap-2">
                 {/* <ArrowLeft size={20} /> */}
                 <IoIosArrowRoundBack size={30} />
                 All news in this category
-              </button>
+              </Link>
             </div>
           </div>
         </div>

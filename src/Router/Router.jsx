@@ -9,6 +9,7 @@ import Register from "../Pages/Register";
 import Login from "../Pages/Login";
 import AuthLayout from "../Layouts/AuthLayout";
 import NewsDetails from "../Pages/NewsDetails";
+import PrivateRoute from "../Provider/PrivateRoute";
 
 // import Home from "../Components/Home";
 
@@ -39,13 +40,17 @@ export const router = createBrowserRouter([
       },
       {
         path: "/auth/register",
-        element: <Register></Register> ,
+        element: <Register></Register>,
       },
     ],
   },
   {
     path: "/news-details/:id",
-    element: <NewsDetails></NewsDetails>,
+    element: (
+      <PrivateRoute>
+        <NewsDetails></NewsDetails>
+      </PrivateRoute>
+    ),
     loader: () => fetch("/news.json"),
   },
 
